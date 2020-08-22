@@ -12,17 +12,6 @@ class LearningItemDetails extends StatefulWidget {
 }
 
 class _LearningItemDetailsState extends State<LearningItemDetails> {
-  String _title;
-  ThemeData _themData;
-
-  @override
-  void initState() {
-    _title = widget.title;
-    _themData = Theme.of(context).copyWith(accentColor: Colors.white);
-
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -54,10 +43,20 @@ class _LearningItemDetailsState extends State<LearningItemDetails> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    DetailsHeading(heading: 'About Animal',),
-                    DetailsParagraph(paragraph: 'Animals (also called Metazoa) are multicellular eukaryotic organisms that form the biological kingdom Animalia. With few exceptions, animals consume organic material, breathe oxygen, are able to move, can reproduce sexually, and grow from a hollow sphere of cells, the blastula, during embryonic development',),
-                    DetailsHeading(heading: 'Characteristics',),
-                    DetailsParagraph(paragraph: 'Animals have several characteristics that set them apart from other living things. Animals are eukaryotic and multicellular, unlike bacteria, which are prokaryotic, and unlike protists, which are eukaryotic but unicellular.',),
+                    DetailsHeading(
+                      heading: 'About Animal',
+                    ),
+                    DetailsParagraph(
+                      paragraph:
+                          'Animals (also called Metazoa) are multicellular eukaryotic organisms that form the biological kingdom Animalia. With few exceptions, animals consume organic material, breathe oxygen, are able to move, can reproduce sexually, and grow from a hollow sphere of cells, the blastula, during embryonic development',
+                    ),
+                    DetailsHeading(
+                      heading: 'Characteristics',
+                    ),
+                    DetailsParagraph(
+                      paragraph:
+                          'Animals have several characteristics that set them apart from other living things. Animals are eukaryotic and multicellular, unlike bacteria, which are prokaryotic, and unlike protists, which are eukaryotic but unicellular.',
+                    ),
                   ],
                 ),
               )
@@ -76,7 +75,9 @@ class _LearningItemDetailsState extends State<LearningItemDetails> {
         leading: IconButton(
           icon: Icon(Icons.keyboard_arrow_left),
           tooltip: 'Back',
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
         actions: [
           IconButton(

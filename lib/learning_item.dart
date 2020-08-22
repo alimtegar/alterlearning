@@ -1,3 +1,4 @@
+import 'package:alterlearning/learning_item_details.dart';
 import 'package:flutter/material.dart';
 
 class LearningItem extends StatefulWidget {
@@ -50,7 +51,13 @@ class _LearningItemState extends State<LearningItem> {
         IconButton(
             color: Colors.white,
             icon: Icon(Icons.keyboard_arrow_right),
-            onPressed: () {}),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          LearningItemDetails(title: widget.title)));
+            }),
         // ),
       ]),
     );
