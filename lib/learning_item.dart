@@ -5,7 +5,7 @@ class LearningItem extends StatefulWidget {
   LearningItem({Key key, this.id, this.title, this.description, this.image})
       : super(key: key);
 
-final int id;
+  final int id;
   final String title;
   final String description;
   final String image;
@@ -18,9 +18,9 @@ class _LearningItemState extends State<LearningItem> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.blue,
+      color: Color(0xFF1FC49A),
       margin: EdgeInsets.only(top: 0, right: 0, bottom: 8, left: 0),
-      shape: Border(left: BorderSide(color: Colors.blue, width: 4)),
+      shape: Border(left: BorderSide(color: Color(0xFF1FC49A), width: 4)),
       child: Row(children: <Widget>[
         Expanded(
           child: Container(
@@ -43,12 +43,11 @@ class _LearningItemState extends State<LearningItem> {
                     style: TextStyle(fontWeight: FontWeight.w500),
                   ),
                 ),
-                subtitle: Text(widget.description),
+                subtitle: Text(widget.description, style: TextStyle(color: Color(0xFF4D5156)),),
               ),
             ),
           ),
         ),
-        // Expanded(
         IconButton(
             color: Colors.white,
             icon: Icon(Icons.keyboard_arrow_right),
@@ -56,8 +55,8 @@ class _LearningItemState extends State<LearningItem> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) =>
-                          LearningItemDetails(id: widget.id, title: widget.title)));
+                      builder: (context) => LearningItemDetails(
+                          id: widget.id, title: widget.title)));
             }),
         // ),
       ]),

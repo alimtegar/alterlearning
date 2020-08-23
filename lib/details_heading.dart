@@ -14,7 +14,7 @@ class _DetailsHeadingState extends State<DetailsHeading> {
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
-            border: Border(left: BorderSide(color: Colors.blue, width: 4))),
+            border: Border(left: BorderSide(color: Color(0xFF1FC49A), width: 4))),
         child: Padding(
           padding: const EdgeInsets.only(left: 20),
           child: Text(

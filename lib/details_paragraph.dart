@@ -14,7 +14,7 @@ class _DetailsParagraphState extends State<DetailsParagraph> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 8, right: 24, bottom: 16, left: 24),
-      child: Text(widget.paragraph),
+      child: Text(widget.paragraph, style: TextStyle(color: Color(0xFF4D5156)),),
     );
   }
 }

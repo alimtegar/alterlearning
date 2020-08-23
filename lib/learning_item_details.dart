@@ -73,7 +73,8 @@ class _LearningItemDetailsState extends State<LearningItemDetails> {
   Widget _buildBackground() {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        backgroundColor: Color(0xFF1FC49A),
+        title: Text(widget.title, style: TextStyle(color: Colors.white),),
         centerTitle: true,
         leading: IconButton(
           icon: Icon(Icons.keyboard_arrow_left),

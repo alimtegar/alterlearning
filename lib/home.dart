@@ -46,16 +46,10 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        backgroundColor: Color(0xFF1FC49A),
+        title: Text(widget.title, style: TextStyle(color: Colors.white),),
         centerTitle: true,
         leading: null,
-        // actions: [
-        //   IconButton(
-        //     icon: const Icon(Icons.menu),
-        //     tooltip: 'Menu',
-        //     onPressed: () {},
-        //   )
-        // ],
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(65.0),
           child: Theme(
@@ -113,6 +107,7 @@ class _HomeState extends State<Home> {
               ),
               Text(
                 'Choose subject below to learn it',
+                style: TextStyle(color: Color(0xFF4D5156)),
               ),
             ],
           ),

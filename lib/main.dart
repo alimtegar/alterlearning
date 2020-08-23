@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'AlterLearning',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Color(0xFF1FC49A),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Home(title: 'AlterLearning',),
