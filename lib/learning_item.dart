@@ -2,9 +2,10 @@ import 'package:alterlearning/learning_item_details.dart';
 import 'package:flutter/material.dart';
 
 class LearningItem extends StatefulWidget {
-  LearningItem({Key key, this.title, this.description, this.image})
+  LearningItem({Key key, this.id, this.title, this.description, this.image})
       : super(key: key);
 
+final int id;
   final String title;
   final String description;
   final String image;
@@ -56,7 +57,7 @@ class _LearningItemState extends State<LearningItem> {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          LearningItemDetails(title: widget.title)));
+                          LearningItemDetails(id: widget.id, title: widget.title)));
             }),
         // ),
       ]),

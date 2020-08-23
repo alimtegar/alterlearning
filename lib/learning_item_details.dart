@@ -1,10 +1,12 @@
 import 'package:alterlearning/details_heading.dart';
 import 'package:alterlearning/details_paragraph.dart';
+import 'package:alterlearning/learning_list.dart';
 import 'package:flutter/material.dart';
 
 class LearningItemDetails extends StatefulWidget {
-  LearningItemDetails({Key key, this.title}) : super(key: key);
+  LearningItemDetails({Key key, this.id, this.title}) : super(key: key);
 
+  final int id;
   final String title;
 
   @override
@@ -12,6 +14,15 @@ class LearningItemDetails extends StatefulWidget {
 }
 
 class _LearningItemDetailsState extends State<LearningItemDetails> {
+  Map<String, dynamic> _learningItem;
+
+  @override
+  void initState() {
+    _learningItem =
+        LearningList.learningList.firstWhere((i) => i['id'] == widget.id);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -36,7 +47,7 @@ class _LearningItemDetailsState extends State<LearningItemDetails> {
               ClipRRect(
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(8), topRight: Radius.circular(8)),
-                child: Image.network('https://picsum.photos/id/1074/500/300'),
+                child: Image.network(_learningItem['image_lg']),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 24),
@@ -44,18 +55,10 @@ class _LearningItemDetailsState extends State<LearningItemDetails> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     DetailsHeading(
-                      heading: 'About Animal',
+                      heading: 'About ' + _learningItem['title'],
                     ),
                     DetailsParagraph(
-                      paragraph:
-                          'Animals (also called Metazoa) are multicellular eukaryotic organisms that form the biological kingdom Animalia. With few exceptions, animals consume organic material, breathe oxygen, are able to move, can reproduce sexually, and grow from a hollow sphere of cells, the blastula, during embryonic development',
-                    ),
-                    DetailsHeading(
-                      heading: 'Characteristics',
-                    ),
-                    DetailsParagraph(
-                      paragraph:
-                          'Animals have several characteristics that set them apart from other living things. Animals are eukaryotic and multicellular, unlike bacteria, which are prokaryotic, and unlike protists, which are eukaryotic but unicellular.',
+                      paragraph: _learningItem['content'],
                     ),
                   ],
                 ),

@@ -1,3 +1,4 @@
+import 'package:alterlearning/learning_list.dart';
 import 'package:flutter/material.dart';
 import 'package:alterlearning/learning_item.dart';
 
@@ -11,6 +12,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,31 +77,16 @@ class _HomeState extends State<Home> {
             ),
           ),
           Container(
-              child: Column(
-            // shrinkWrap: true,
-            children: <Widget>[
-              LearningItem(
-                  title: 'Animal',
-                  description:
-                      'Animals (also called Metazoa) are multicellular eukaryotic ...',
-                  image: 'https://picsum.photos/id/1074/75/75'),
-              LearningItem(
-                  title: 'Plant',
-                  description:
-                      'Plants are mainly multicellular organisms, predominantly ...',
-                  image: 'https://picsum.photos/id/28/75/75'),
-              LearningItem(
-                  title: 'Fungi',
-                  description:
-                      'A fungus is any member of the group of eukaryotic organisms ...',
-                  image: 'https://picsum.photos/id/292/75/75'),
-              LearningItem(
-                  title: 'Bacteria',
-                  description:
-                      'Bacteria are a type of biological cell. They constitute a large ...',
-                  image: 'https://picsum.photos/id/253/75/75'),
-            ],
-          )),
+              child: ListView.builder(
+				  shrinkWrap: true,
+				  itemCount: LearningList.learningList.length,
+                  itemBuilder: (BuildContext context, int index) =>
+                      LearningItem(
+						  id: LearningList.learningList[index]['id'],
+                        title: LearningList.learningList[index]['title'],
+						image: LearningList.learningList[index]['image'],
+						description: LearningList.learningList[index]['description'],
+                      ))),
         ],
       ),
     );
