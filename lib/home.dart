@@ -47,7 +47,10 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF1FC49A),
-        title: Text(widget.title, style: TextStyle(color: Colors.white),),
+        title: Text(
+          widget.title,
+          style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
         leading: null,
         bottom: PreferredSize(
@@ -114,6 +117,7 @@ class _HomeState extends State<Home> {
         ),
         Container(
             child: ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: list.length,
                 itemBuilder: (BuildContext context, int index) => LearningItem(
@@ -160,6 +164,7 @@ class _HomeState extends State<Home> {
         ),
         Container(
             child: ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: filteredList.length,
                 itemBuilder: (BuildContext context, int index) => LearningItem(
