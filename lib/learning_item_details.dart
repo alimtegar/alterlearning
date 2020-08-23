@@ -82,13 +82,13 @@ class _LearningItemDetailsState extends State<LearningItemDetails> {
             Navigator.pop(context);
           },
         ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.menu),
-            tooltip: 'Menu',
-            onPressed: () {},
-          )
-        ],
+        // actions: [
+        //   IconButton(
+        //     icon: Icon(Icons.menu),
+        //     tooltip: 'Menu',
+        //     onPressed: () {},
+        //   )
+        // ],
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(65),
           child: Theme(

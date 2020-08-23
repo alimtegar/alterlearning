@@ -45,45 +45,54 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.menu),
-              tooltip: 'Menu',
-              onPressed: () {},
-            )
-          ],
-          bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(65.0),
-            child: Theme(
-                data: Theme.of(context).copyWith(accentColor: Colors.white),
-                child: Container(
-                  height: 50.0,
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.only(right: 15, bottom: 15, left: 15),
-                  child: TextField(
-                    controller: searchController,
-                    decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        prefixIcon: Icon(Icons.search),
-                        hintText: 'Type here to search item...',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                          borderSide: BorderSide.none,
-                        ),
-                        contentPadding: EdgeInsets.all(15)),
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                    //   textAlignVertical: TextAlignVertical.center,
-                    onChanged: null,
+      appBar: AppBar(
+        title: Text(widget.title),
+        centerTitle: true,
+        leading: null,
+        // actions: [
+        //   IconButton(
+        //     icon: const Icon(Icons.menu),
+        //     tooltip: 'Menu',
+        //     onPressed: () {},
+        //   )
+        // ],
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(65.0),
+          child: Theme(
+              data: Theme.of(context).copyWith(accentColor: Colors.white),
+              child: Container(
+                height: 50.0,
+                alignment: Alignment.center,
+                margin: EdgeInsets.only(right: 15, bottom: 15, left: 15),
+                child: TextField(
+                  controller: searchController,
+                  decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white,
+                      prefixIcon: Icon(Icons.search),
+                      suffixIcon: IconButton(
+                        icon: Icon(Icons.clear),
+                        onPressed: () {
+                          searchController.clear();
+                        },
+                      ),
+                      hintText: 'Type here to search item...',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8)),
+                        borderSide: BorderSide.none,
+                      ),
+                      contentPadding: EdgeInsets.all(15)),
+                  style: TextStyle(
+                    fontSize: 14,
                   ),
-                )),
-          ),
+                  //   textAlignVertical: TextAlignVertical.center,
+                  onChanged: null,
+                ),
+              )),
         ),
-        body: !isSearching ? _buildListView() : _performSearch());
+      ),
+      body: !isSearching ? _buildListView() : _performSearch(),
+    );
   }
 
   Widget _buildListView() {
@@ -123,7 +132,11 @@ class _HomeState extends State<Home> {
   }
 
   Widget _performSearch() {
-    filteredList = list.where((i) => i['title'].toLowerCase().contains(query.toLowerCase()) || i['content'].toLowerCase().contains(query.toLowerCase())).toList();
+    filteredList = list
+        .where((i) =>
+            i['title'].toLowerCase().contains(query.toLowerCase()) ||
+            i['content'].toLowerCase().contains(query.toLowerCase()))
+        .toList();
 
     return _buildFilteredListView();
   }
